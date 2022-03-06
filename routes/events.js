@@ -40,7 +40,7 @@ let event_locations_query = fs.readFileSync(path.join(__dirname, "../db/select_e
 let event_types_query = fs.readFileSync(path.join(__dirname, "../db/select_event_types.sql"), "utf-8");
 
 
-router.get('/create', requireAdmin ,async function(req, res, next) {
+router.get('/create' ,async function(req, res, next) {
   try {
 
     let event_locations = await db.queryPromise(event_locations_query);
@@ -84,7 +84,7 @@ router.get('/:event_id', function(req, res, next) {
 
 let singleEventForFormQuery = fs.readFileSync(path.join(__dirname, "../db/select_event_single_form.sql"), "utf-8");
 
-router.get('/:event_id/modify', requireAdmin , async function(req, res, next) {
+router.get('/:event_id/modify' , async function(req, res, next) {
   try {
 
     let event_locations = await db.queryPromise(event_locations_query);
@@ -106,7 +106,7 @@ router.get('/:event_id/modify', requireAdmin , async function(req, res, next) {
 
 let insertEventQuery = fs.readFileSync(path.join(__dirname, "../db/insert_event.sql"), "utf-8");
 // (`event_name`, `event_location_id`, `event_type_id`, `event_dt`, `event_duration`, `event_description`) 
-router.post('/', requireAdmin ,async function(req, res, next) {
+router.post('/'  ,async function(req, res, next) {
   try {
     let results = await db.queryPromise(insertEventQuery, [req.body.event_name, 
       req.body.event_location_id, 
@@ -124,7 +124,7 @@ router.post('/', requireAdmin ,async function(req, res, next) {
 })
 
 let updateEventQuery = fs.readFileSync(path.join(__dirname, "../db/update_event.sql"), "utf-8"); 
-router.post('/:event_id', requireAdmin ,async function(req, res, next) {
+router.post('/:event_id' ,async function(req, res, next) {
   try {
     let results = await db.queryPromise(updateEventQuery, [req.body.event_name, 
       req.body.event_location_id, 
@@ -142,7 +142,7 @@ router.post('/:event_id', requireAdmin ,async function(req, res, next) {
 })
 
 let deleteEventQuery = "DELETE FROM event WHERE event_id = ?";
-router.get('/:event_id/delete', requireAdmin, async (req, res, next) => {
+router.get('/:event_id/delete', async (req, res, next) => {
   try {
     await db.queryPromise(deleteEventQuery, req.params.event_id);
     res.redirect('/events')

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>HackBCA 20XX</title>
+  <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico" />
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="/styles/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Shared site-wide CSS  -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Page specific CSS -->
+  <link rel="stylesheet" href="/styles/tables.css">
+
+  <link rel="stylesheet" href="/styles/project.css">
+</head>
+
+<body>
+
+
+
+    <main>
+        <div class = "container">
+        <h1> Projects
+          <!--ADMIN ONLY-->         
+          <a class="btn-floating  waves-effect waves-light blue large-btn" href="/projects/create"><i
+          class="material-icons">add_box</i></a>
+        </h1>
+        </div>
+        <div class = "container">
+          <table class = "margin highlight centered responsive-table white rounded">
+
+          <thead>
+              <tr>
+                  <!-- USER-->
+                  <th>Project Name</th>
+                  <th>Type</th>
+                  <th>Team</th>
+                  <th>Grade</th>
+                  <th>Date Proposed</th>
+                  <th>Likes</th>
+
+                  <!--ADMIN ONLY-->
+                  <th>Admin</th>
+
+              </tr>
+            </thead>
+    
+            <tbody>
+            {{#each projects}}
+              <tr>
+                <td>
+
+                <a href = "/projects/{{project_id}}">{{project_name}} </a><tab>
+                </td>
+                <td>{{project_type_name}}</td>
+                <td>{{team_name}}</td>
+                <td>{{grade}}</td>
+                <td>{{date_proposed}}</td>
+                <td>
+                  {{project_likes}}
+                  <!-- USER ONLY  -->
+                  <a onclick='selectLike(this, "{{ project_id }}")'
+                  class="btn-floating btn-small waves-effect waves-light scale-transition scale-in red"><i
+                    class="material-icons">favorite_border</i></a>
+                </td>
+            <!-- ADMIN ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projects/{{project_id}}/modify">
+              <i class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("{{project_name}}", "/projects")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+              </tr>
+            {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+
+      <br>
+    </main>
+    
+
+<!-- Compiled and minified Materialize JavaScript -->
+<script src="/js/materialize.min.js"></script>
+<script src="/js/project_utils.js"></script>
+
+
+<!-- initialize Materialize elements -->
+<script> M.AutoInit();</script>
+
+</body>
+
+</html>

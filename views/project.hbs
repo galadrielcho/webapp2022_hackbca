@@ -1,0 +1,146 @@
+ <!DOCTYPE html>
+ <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+ 
+         <title>HackBCA 20XX</title>
+         <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico"/>
+ 
+         <!-- Compiled and minified CSS -->
+         <link rel="stylesheet" href="/styles/materialize.min.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+ 
+         <!-- Shared site-wide CSS  -->
+         <link rel="stylesheet" href="/styles/main.css">
+         <!-- Page specific CSS -->
+         <link rel="stylesheet" href="/styles/tables.css">
+         <link rel="stylesheet" href="/styles/project.css">
+     </head>
+     <body>
+     <main>
+
+        <div class = "container">
+            {{#with project_data}}
+
+            <div class="card">
+              <div class="card-image">
+              <img src="/images/assembly.jpg">
+              <span class="card-title">{{project_name}}
+            <!-- ADMIN/PROJECT OWNER ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projects/{{project_id}}/modify"><i
+                  class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("{{project_name}}", "/projects.html")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+
+              </span>
+              <a onclick='selectLike(this, "{{ project_id }}")' class="btn-floating halfway-fab waves-effect waves-light scale-transition scale-in red"><i class="material-icons">favorite_border</i></a>
+
+              </div>
+              <br>
+
+              <div class = "container">
+
+                <h5 class ="blue-text"> Description </h5>
+                <p>{{project_description}}
+                  </p>
+                  <br>
+
+                  <table class = "centered striped responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <div class="card blue rounded">
+                          <div class="container">
+                            <h6 class = "margin white-text"> Information</h6>
+                          </div>
+                        </div>
+                      </tr>
+                      <tr>
+                          <th>Project Type</th>
+                          <th>Team</th>
+                          <th>Grade</th>
+                          <th>Date</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr>
+                        <td>{{project_type_name}}</td>
+                        <td>{{team_name}}</td>
+                        <td>{{grade}}</td>
+                        <td>{{date_proposed}}</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+
+            </div>
+
+            <br>    
+            </div>
+            {{/with}}
+
+
+      <div class="card white">
+        <div class="card white">
+          <div class="card-content blue-text">
+            <span class="card-title">Comments</span>
+                <div class="row">
+      <!-- ONLY USER/ADMIN CAN COMMENT -->
+
+      <form class="col s12">
+        <div class="row">
+        </div>
+
+        <div class="row">
+          <div class="input-field col s10">
+            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+            <label for="textarea1">Comment</label>
+          </div>
+          <a class="btn-floating btn-large waves-effect waves-light blue" href="/projects/1.html?"><i
+            class="material-icons">comment</i></a>
+        </div>
+      </form>
+    </div>
+          <ul class="collection">
+            {{#each comments}}
+            <li class="collection-item avatar comment">
+              <i class="material-icons circle green">person
+              </i>
+              <span class="title ">{{email}}</span>
+
+            <a onclick='confirmCommentDelete("{{comment_id}}", "/projects/{{project_id}}.html")'>
+                <i class="tiny material-icons">delete</i>
+                </a>
+
+              <p>{{comment_content}}</p>
+
+            </li>
+
+            {{/each}}
+          </ul>
+
+      </div>
+
+                    
+     </main>
+ 
+ 
+ 
+     <!-- Compiled and minified JavaScript -->
+     <script src="/js/materialize.min.js"></script>
+     <script src="/js/project_utils.js"></script>
+
+
+
+
+ 
+     <!-- initialize Materialize elements -->
+     <script> M.AutoInit(); </script>
+     </body>
+ </html>

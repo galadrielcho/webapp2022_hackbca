@@ -1,0 +1,11 @@
+table .material-icons {
+    font-size: 1rem
+}
+
+.rounded {
+    border-radius: .25em;
+}
+
+.margin {
+    padding: 1rem;
+}

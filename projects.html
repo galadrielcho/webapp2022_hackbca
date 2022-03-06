@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>HackBCA 20XX</title>
+  <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico" />
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="/styles/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Shared site-wide CSS  -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Page specific CSS -->
+  <link rel="stylesheet" href="/styles/tables.css">
+
+  <link rel="stylesheet" href="/styles/project.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+          <div class="nav-wrapper">
+            <img class="hide-on-small-and-down" src="/images/bca-logo-transparent.png">
+            <a href="/" class="brand-logo">HackBCA 20XX</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="desktop-nav" class="right hide-on-med-and-down">
+              <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+              <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+              <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+              <li><a href="/login.html" class="btn">Login / Register</a></li>
+            </ul>
+          </div>
+        </nav>
+        <ul id="mobile-nav" class="sidenav">
+          <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+          <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+          <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+          <li><a href="/login.html" class="btn">Login / Register</a></li>
+        </ul>
+      </header>
+
+
+    <main>
+        <div class = "container">
+        <h1> Projects
+          <!--ADMIN ONLY-->         
+          <a class="btn-floating  waves-effect waves-light blue large-btn" href="/projectform.html"><i
+          class="material-icons">add_box</i></a>
+        </h1>
+        </div>
+        <div class = "container">
+          <table class = "margin highlight centered responsive-table white rounded">
+
+          <thead>
+              <tr>
+                  <!-- USER-->
+                  <th>Project Name</th>
+                  <th>Type</th>
+                  <th>Creator(s)</th>
+                  <th>Grade</th>
+                  <th>Date Proposed</th>
+                  <th>Likes</th>
+
+                  <!--ADMIN ONLY-->
+                  <th>Admin</th>
+
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr>
+                <td>
+
+                <a href = "/projects/1.html"> Mad Rat Dead </a>
+                </td>
+                <td>Rhythm platformer game</td>
+                <td>Nippon Ichi Software</td>
+                <td>Senior</td>
+                <td>10/29/20</td>
+                <td>
+                  132
+                  <!-- USER ONLY  -->
+                  <a onclick='selectLike(this, "{{ event_id }}")'
+                  class="btn-floating btn-small waves-effect waves-light scale-transition scale-in red"><i
+                    class="material-icons">favorite_border</i></a>
+                </td>
+            <!-- ADMIN ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projectform.html"><i
+                  class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("Mad Rat Dead", "/projects.html")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href = "/projects/2.html">Lily's Gallery</a><tab>
+
+                </td>
+                <td>Website</td>
+                <td>Christina Kaddouh</td>
+                <td>Junior</td>
+                <td>01/08/22</td>
+                <td>
+                  203
+                  <!-- USER ONLY  -->
+                  <a onclick='selectLike(this, "{{ event_id }}")'
+                  class="btn-floating btn-small waves-effect waves-light scale-transition scale-in red"><i
+                    class="material-icons">favorite_border</i></a>
+                </td>
+            <!-- ADMIN ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projectform.html"><i
+                  class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("Lily&#39s Gallery", "/projects.html")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href = "/projects/3.html">Portal 2</a><tab>
+
+
+                </td>
+                <td>Puzzle platformer game</td>
+                <td>Valve Corporation</td>
+                <td> Sophomore </td>
+                <td>4/18/11</td>
+                <td>
+                  112
+                  <!-- USER ONLY  -->
+                  <a onclick='selectLike(this, "{{ event_id }}")'
+                  class="btn-floating btn-small waves-effect waves-light scale-transition scale-in red"><i
+                    class="material-icons">favorite_border</i></a>
+                </td>
+
+            <!-- ADMIN ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projectform.html"><i
+                  class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("Portal 2", "/projects.html")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      <br>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+            <h5 class="white-text">Sponsors</h5>
+            <p>hackBCA is brought to you by:</p>
+            <ul>
+                <li>BCA PPO</li>
+                <li>Tech-Pa</li>
+                <li>&lt;Corporate Sponsors&gt;</li>
+                <li>Wanna join this list? Sponsor us!</li>
+            </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Contact Us</h5>
+            <ul>
+                <li>Twitter: @hackbca</li>
+                <li>Instagram: @hackbca</li>
+                <li>Facebook: @hackbca</li>
+                <li>Email: hackbca@_____</li>
+            </ul>
+            </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
+            © 2021 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+        </div>
+    </footer>
+
+<!-- Compiled and minified Materialize JavaScript -->
+<script src="/js/materialize.min.js"></script>
+<script src="/js/project_utils.js"></script>
+
+
+<!-- initialize Materialize elements -->
+<script> M.AutoInit();</script>
+
+</body>
+
+</html>

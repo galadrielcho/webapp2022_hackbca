@@ -1,0 +1,223 @@
+<!-- 
+    STOP! You should understand how index.html AND events.html are built first. 
+
+    This page is a prototype of an event page, showing details about a specific event.
+
+    An unregistered user will not see any buttons.
+    A registered user (attendee) will see the "star" buttons
+    An admin user will see the edit, delete, and create buttons
+
+    This page has the same nav header and footer as index; the main section is what contains different things.
+
+    Many things of note are shared with events.html: 
+        Tables, which materialize has nice options for: https://materializecss.com/table.html
+        Icons, which are : https://materializecss.com/icons.html
+        Materialize "buttons": https://materializecss.com/buttons.html
+        Some custom CSS for formatting tables:         <link rel="stylesheet" href="/styles/tables.css">
+        Some custom JS for interactive buttons:     <script src="/js/event_utils.js"></script>
+        Some onclick attributes on certain clickable HTML elements, which trigger a snippet of JS
+
+    Some things of note SPECIFIC TO THIS PAGE:
+        Most of the page is a Materialize Card:    https://materializecss.com/cards.html 
+        Some custom CSS:         <link rel="stylesheet" href="/styles/event.css">
+
+
+    After this page, check out eventform.html (a sample add/modify event page)
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+ 
+         <title>HackBCA 20XX</title>
+         <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico"/>
+ 
+         <!-- Compiled and minified CSS -->
+         <link rel="stylesheet" href="/styles/materialize.min.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+ 
+         <!-- Shared site-wide CSS  -->
+         <link rel="stylesheet" href="/styles/main.css">
+         <!-- Page specific CSS -->
+         <link rel="stylesheet" href="/styles/tables.css">
+         <link rel="stylesheet" href="/styles/project.css">
+     </head>
+     <body>
+     <header>
+         <nav>
+             <div class="nav-wrapper">
+                 <img class="hide-on-small-and-down" src="/images/bca-logo-transparent.png">
+                 <a href="/" class="brand-logo">HackBCA 20XX</a>
+                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                 <ul id="desktop-nav" class="right hide-on-med-and-down">
+                     <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+                     <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+                     <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+                     <li><a href="/login.html" class="btn">Login / Register</a></li>
+                 </ul>
+             </div>
+         </nav>
+         <ul id="mobile-nav" class="sidenav">
+             <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+             <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+             <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+             <li><a href="/login.html" class="btn">Login / Register</a></li>
+         </ul>
+     </header>
+     <main>
+        <div class = "container">
+
+          <div class="card">
+              <div class="card-image">
+              <img src="/images/lily.png">
+              <span class="card-title">Lily's Gallery 
+            <!-- ADMIN/PROJECT OWNER ONLY BUTTONS -->
+            <td nowrap>
+
+              <a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/projectform.html"><i
+                  class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("Lily&#39s Gallery", "/projects.html")'><i
+                  class="material-icons">delete</i></a>
+
+            </td>
+
+              </span>
+              <a onclick='selectLike(this, "{{ event_id }}")' class="btn-floating halfway-fab waves-effect waves-light scale-transition scale-in red"><i class="material-icons">favorite_border</i></a>
+
+              </div>
+              <br>
+              <div class = "container">
+
+                <h5 class ="blue-text"> Description </h5>
+                <p>
+                  Christina Kaddouh, doting pet owner extraordinaire, is finally making a gallery of her beloved cat Lily! Browse through her finest, silliest, and cutest photos for your own leisure.
+                  </p>
+                  <br> 
+
+
+                  <table class = "centered striped responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <div class="card blue rounded">
+                          <div class="container">
+                            <h6 class = "margin white-text"> Information</h6>
+                          </div>
+                        </div>
+                      </tr>
+                      <tr>
+                          <th>Type</th>
+                          <th>Creator(s)</th>
+                          <th>Grade</th>
+                          <th>Date Proposed</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr>
+                        <td>Website</td>
+                        <td>Christina Kaddouh</td>
+                        <td>Junior</td>
+                        <td>01/08/22</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+              
+
+                  
+            </div>
+            
+            <br>
+            
+      </div>
+    
+      <div class="card white">
+        <div class="card white">
+          <div class="card-content blue-text">
+            <span class="card-title">Comments</span>
+                <div class="row">
+      <!-- ONLY USER/ADMIN CAN COMMENT -->
+
+      <form class="col s12">
+        <div class="row">
+        </div>
+
+        <div class="row">
+          <div class="input-field col s10">
+            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+            <label for="textarea1">Comment</label>
+          </div>
+          <a class="btn-floating btn-large waves-effect waves-light blue" href="/projects/1.html?"><i
+            class="material-icons">comment</i></a>
+        </div>
+      </form>
+    </div>
+  
+          <ul class="collection">
+            <li class="collection-item avatar">
+              <i class="material-icons circle green">person
+              </i>
+              <span class="title">notchristina</span>
+              <p>What a gorgeous cat! Easily my favorite project for visuals alone.</p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">person</i>
+              <span class="title">alsonotchristina</span>
+              <p> I've never seen a cuter cat!
+              </p>
+            </li>
+          </ul>
+      </div>
+
+                    
+     </main>
+ 
+     <footer class="page-footer">
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">Sponsors</h5>
+               <p >hackBCA is brought to you by:</p>
+               <ul>
+                 <li>BCA PPO</li>
+                 <li>Tech-Pa</li>
+                 <li>&lt;Corporate Sponsors&gt;</li>
+                 <li>Wanna join this list? Sponsor us!</li>
+               </ul>
+             </div>
+             <div class="col l4 offset-l2 s12">
+               <h5 class="white-text">Contact Us</h5>
+               <ul>
+                 <li>Twitter: @hackbca</li>
+                 <li>Instagram: @hackbca</li>
+                 <li>Facebook: @hackbca</li>
+                 <li>Email: hackbca@_____</li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright">
+           <div class="container">
+           © 2021 Copyright Text
+           <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+           </div>
+         </div>
+       </footer>
+ 
+ 
+ 
+     <!-- Compiled and minified JavaScript -->
+     <script src="/js/materialize.min.js"></script>
+     <script src="/js/project_utils.js"></script>
+
+
+
+
+ 
+     <!-- initialize Materialize elements -->
+     <script> M.AutoInit(); </script>
+     </body>
+ </html>

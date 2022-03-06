@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>HackBCA 20XX</title>
+  <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico" />
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="/styles/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Shared site-wide CSS  -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Page specific CSS -->
+  <link rel="stylesheet" href="/styles/tables.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+          <div class="nav-wrapper">
+            <img class="hide-on-small-and-down" src="/images/bca-logo-transparent.png">
+            <a href="/" class="brand-logo">HackBCA 20XX</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="desktop-nav" class="right hide-on-med-and-down">
+              <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+              <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+              <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+              <li><a href="/login.html" class="btn">Login / Register</a></li>
+            </ul>
+          </div>
+        </nav>
+        <ul id="mobile-nav" class="sidenav">
+          <li><a href="/events.html"><i class="material-icons left">event</i>Events</a></li>
+          <li><a href="/attendees.html"><i class="material-icons left">people</i>Attendees</a></li>
+          <li><a href="/projects.html"><i class="material-icons left">build</i>Projects</a></li>
+          <li><a href="/login.html" class="btn">Login / Register</a></li>
+        </ul>
+      </header>
+
+
+    <main>
+        <div class = "container">
+            <h1>Create/Modify Project</h1
+            <div class = "container">
+                <div class = "card-panel white">
+                    <form class="col s12">
+                        <div class= "row">
+                            <div class="input-field col s6">
+                                <input placeholder="Project Name" id="project_name" type="text" length = "10" required>
+                                <label for="project_name">Project Name</label>
+                              </div>
+                              <div class="input-field col s6">
+                                <input placeholder="Type" id="type" type="text" required>
+                                <label for="type">Type</label>
+                              </div>
+                        </div>
+                      <div class="row">
+
+                        <div class="input-field col s6">
+                            <input placeholder="Creator(s)" id="creators" type="text" class="validate" required>
+                            <label for="creators">Creators</label>
+                          </div>
+                          <div class="input-field col s6" >
+                            <select required>
+                              <option value="" disabled selected>Grade</option>
+                              <option value="1">Freshman</option>
+                              <option value="2">Sophomore</option>
+                              <option value="3">Junior</option>
+                              <option value="3">Senior</option>
+
+                            </select>
+                            <label>Materialize Select</label>
+                          </div>
+
+                      </div>
+                      <div class= "row">
+                        <div class="input-field col s6">
+                            <input id="date" type="text" class="datepicker autoinit" required>
+                            <label for="date">Date Proposed</label>
+                          </div>
+                      </div>
+                      <button class="btn waves-effect waves-light btn-large" type="submit" name="action">CREATE
+                        <i class="material-icons right">create</i>
+                      </button>
+
+                      </div>
+                    </form>
+                  </div>                
+                </class>
+
+            
+            </class>
+            </class>
+        </class>
+        
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+            <h5 class="white-text">Sponsors</h5>
+            <p>hackBCA is brought to you by:</p>
+            <ul>
+                <li>BCA PPO</li>
+                <li>Tech-Pa</li>
+                <li>&lt;Corporate Sponsors&gt;</li>
+                <li>Wanna join this list? Sponsor us!</li>
+            </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Contact Us</h5>
+            <ul>
+                <li>Twitter: @hackbca</li>
+                <li>Instagram: @hackbca</li>
+                <li>Facebook: @hackbca</li>
+                <li>Email: hackbca@_____</li>
+            </ul>
+            </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
+            © 2021 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+        </div>
+    </footer>
+
+<!-- Compiled and minified Materialize JavaScript -->
+<script src="/js/materialize.min.js">
+
+
+</script>
+
+<!-- initialize Materialize elements -->
+<script>         
+M.AutoInit();
+</script>
+
+</body>
+
+</html>

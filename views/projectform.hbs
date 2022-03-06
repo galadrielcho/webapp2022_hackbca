@@ -1,0 +1,100 @@
+<form id="create_update_project" method="post" action="/projects{{#if project}}/{{project.project_id}}{{/if}}">
+  <input type="hidden" name="project_id" id="project_id" value="{{#if project}}{{project.project_id}}{{/if}}">
+
+  <div class = "container">
+      <h1 class= "center-align">{{title}}</h1>
+      
+      <div class = "container center-align">
+          <div class = "card-panel white">
+              {{#if project}}<p> Test{{project.project_id}} </p>{{/if}}
+
+              <form class="col s12">
+                  <div class= "row">
+                      <div class="input-field col s6">
+                          <input placeholder="Project Name" id="project_name" name="project_name" type="text" length = "10" required>
+                          <label for="project_name">Project Name</label>
+                      </div>
+                        <div class="input-field col s6">
+                          <input placeholder="Project Type" id="type" name="projec_type" type="text" required>
+                          <label for="type">Type</label>
+                      </div>
+                  </div>
+                <div class="row">
+                      <div class="input-field col s6">
+                          <input placeholder="Team Name" id="project_team" name="team_name" type="text" required>
+                          <label for="project_team">Team Name</label>
+                      </div>
+
+
+                    <div class="input-field col s6" >
+                      <select id = "project_grade" name = "grade" required>
+                        <option value="" disabled selected>Select a grade</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                      <label>Grade</label>
+                    </div>
+                  </div>
+                <div class= "row">
+                  <div class="input-field col s6">
+                    <input type="text" id=project_date name="project_date" class="datepicker no-autoinit" required>
+
+                      <label for="date">Date Proposed</label>
+                    </div>
+                </div>
+                <div class= "row">
+                      <div class="input-field col s12">
+                        <textarea id="project_desc" name="project_desc" class="materialize-textarea" data-length="500"></textarea>
+                        <label for="project_desc">Description</label>
+
+                      </div>
+                </div>
+              <button class="submit waves-effect waves-light btn" type="submit">{{#if project}}UPDATE{{else}}CREATE{{/if}}</button>
+
+            </div>
+  </div>                
+</form>
+
+
+<!-- Compiled and minified Materialize JavaScript -->
+<script src="/js/materialize.min.js">
+
+
+</script>
+
+<!-- initialize Materialize elements -->
+<script>   
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+    format: 'mm-dd-yyyy',
+    autoClose: true
+    });
+});
+
+
+{{#with project}} 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById("project_name").value = "{{{project_name}}}";
+    document.getElementById("type").value = "{{project_type_name}}";
+    document.getElementById("project_team").value = "{{project_team}}";
+    document.getElementById("project_grade").value = "{{grade}}";
+
+    document.getElementById("project_date").value = "{{date_proposed}}";
+    
+    document.getElementById("project_desc").value = "{{{project_description}}}";
+
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});
+{{/with}}
+
+M.AutoInit();
+
+</script>
