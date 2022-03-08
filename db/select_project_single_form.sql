@@ -10,7 +10,7 @@ SELECT
 FROM 
 	project, project_type, team
 WHERE
-	project.project_id = 9
+	project.project_id = ?
     and project_team_id = team.team_id
     and project.project_type_id = project_type.project_type_id
 LIMIT 1
