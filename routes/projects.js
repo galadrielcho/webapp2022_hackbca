@@ -102,6 +102,9 @@ router.post('/',async function(req, res, next) {
 let updateProjectQuery = fs.readFileSync(path.join(__dirname, "../db/update_project.sql"), "utf-8"); 
 router.post('/:project_id' ,async function(req, res, next) {
   try {
+    console.log(req.body.team_name);
+    console.log(req.body.projec_type);
+
     let team_results = await db.queryPromise(insertTeamQuery, [req.body.project_team])
     let type_results = await db.queryPromise(insertProjectType, [req.body.project_type])
 
