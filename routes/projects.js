@@ -101,7 +101,6 @@ router.post('/',async function(req, res, next) {
 
 let updateProjectQuery = fs.readFileSync(path.join(__dirname, "../db/update_project.sql"), "utf-8"); 
 router.post('/:project_id' ,async function(req, res, next) {
-  console.log("TEST!!")
   try {
     let team_results = await db.queryPromise(insertTeamQuery, [req.body.project_team])
     let type_results = await db.queryPromise(insertProjectType, [req.body.project_type])
@@ -111,10 +110,11 @@ router.post('/:project_id' ,async function(req, res, next) {
       team_results.insertId, 
       `${req.body.project_date}`,
       req.body.grade,
-      req.body.project_desc
+      req.body.project_desc,
+      req.body.project_id
     ]);
 
-    res.redirect(`/projects/${req.params.event_id}`);
+    res.redirect(`/projects/${req.body.project_id}`);
     } catch(err) {
       next(err);
     }

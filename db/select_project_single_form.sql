@@ -1,4 +1,5 @@
 SELECT 
+    project.project_id,
     project_name, 
     team.team_name as project_team,
     project_type_name,
@@ -11,4 +12,5 @@ FROM
 WHERE
 	project.project_id = ?
     and project_team_id = team_id
+    and project.project_type_id = project_type.project_type_id
 LIMIT 1

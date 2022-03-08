@@ -1,5 +1,4 @@
-
-    <form id="create_update_event" method="post" action="/events{{#if event}}/{{event.event_id}}{{/if}}">
+ <form id="create_update_event" method="post" action="/events{{#if event}}/{{event.event_id}}{{/if}}">
       <!-- action and method depend on C vs U-->
       <input type="hidden" name="event_id" id="event_id" value="{{#if event}}{{event.event_id}}{{/if}}">
       <!-- server sets event_id value-->
@@ -70,8 +69,7 @@
             </div>
 
             <div class="button_wrapper">
-                      <button class="submit waves-effect waves-light btn" type="submit">{{#if event}}UPDATE{{else}}CREATE{{/if}}</button>
-
+              <button class="submit waves-effect waves-light btn" type="submit">{{#if event}}Update{{else}}Create{{/if}}</button>
             </div>
           </div>
         </div>
@@ -88,7 +86,6 @@
         autoClose: true
       });
     });
-
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.timepicker');
       var instances = M.Timepicker.init(elems, {
@@ -97,9 +94,7 @@
         autoClose: false, // automatic close timepicker
       });
     });
-
     //TODO Form Validation
-
     //Set fields to curent values, if existing event data provided (modify)
     {{#with event}} 
     document.addEventListener('DOMContentLoaded', function() {
@@ -111,7 +106,6 @@
         document.getElementById("event_duration").value = "{{event_duration}}";
         {{!-- Use triple mustaches to NOT escape characters --}}
         document.getElementById("event_description").value = "{{{event_description}}}";
-
         
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems, {});

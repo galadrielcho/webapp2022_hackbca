@@ -151,4 +151,16 @@ router.get('/:event_id/delete', async (req, res, next) => {
   }
 })
 
+router.get('/:event_id/register', async (req, res, next) => {
+  try {
+    if (!req.oidc.isAutheticated())
+      res.sendStatus(404);
+    await db.queryPromise("INSERT event_registration (user_id, event_id) VALUES (?, ?)",
+      [req.db_user_id, req.params.event]);
+    res.json({action: "registered"});
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
